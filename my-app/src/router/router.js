@@ -7,7 +7,8 @@ const { createBrowserRouter } = require("react-router-dom")
 
 //라우트 정보를 배열에 저장
 const routes=[
-    {path:"/", element: <Home/>}
+    {path:"/", element: <Home/>},
+    {path:"/membercalendar", element: <MemberCalendar/>}
 ]
 
 //BrowserRouter 를 만들기

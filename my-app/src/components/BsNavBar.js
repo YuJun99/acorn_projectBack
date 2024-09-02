@@ -1,10 +1,11 @@
 // src/components/BsNavBar.js
 
-import { Button, Container, Nav, Navbar } from "react-bootstrap";
+
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import AlertModal from "./AlertModal";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 
 function BsNavBar() {
     //로그인된 사용자명이 있는지 store 에서 읽어와 본다.
@@ -41,7 +42,7 @@ function BsNavBar() {
                     <Navbar.Collapse id="one">
                         <Nav className="me-auto">
                             <Nav.Link as={NavLink} to="/">Home</Nav.Link>
-
+                            <Nav.Link as={NavLink} to="/membercalendar">캘린더</Nav.Link>
                         </Nav>
                         { userName ? 
                             <>

@@ -1,25 +1,26 @@
 // App.css 적용하기 (내부 css)
-import { useEffect, useState } from 'react';
+import { useOutlet } from 'react-router-dom';
 import './App.css'
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+//bootstrap css 로딩하기
+import 'bootstrap/dist/css/bootstrap.css'
+import BsNavBar from './components/BsNavBar';
+import LoginModal from './components/LoginModal';
+import { useSelector } from 'react-redux';
 
 //함수형 component
 function App() {
 
-  const [posts, setPosts] = useState()
-  useEffect(() =>{
-    axios.get("/membercalendar")
-    .then(res=>console.log(res.data))
-    .catch(err=>console.log(err))
-  },[])
-  
+  //현재 route 된 정보를 출력해주는 hook
+  const currentOutlet = useOutlet()
+  const loginModal = useSelector(state => state.loginModal)
+
   return (
     <>
-    <Link to="">식단일지</Link>
-    <Link to="">운동일지</Link>
-      <h1>인덱스 페이지 입니다</h1>
-      
+      <BsNavBar/>
+      <div className="container">
+        <div>{currentOutlet}</div>
+      </div>
+      <LoginModal show={loginModal.show} message={loginModal.message} url={loginModal.url}/>
     </>
   );
 }
